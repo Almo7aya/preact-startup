@@ -6,6 +6,19 @@ module.exports = {
     ],
     output: {
         path: path.join(__dirname, 'build'),
-        filename: path.join(__dirname, 'bandle.js')
-    }
+        filename: 'bandle.js'
+    },
+    module: {
+        rules: [{
+            loader: 'babel-loader',
+            test: /\.js$/,
+            exclude: /node_modules/
+        }]
+    },
+    devServer: {
+        port: 2400,
+        contentBase: path.join(__dirname, 'build'),
+        inline: true
+    },
+    mode: 'development'
 }
